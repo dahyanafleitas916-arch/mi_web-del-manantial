@@ -1,0 +1,1985 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Cabañas El Manantial | Descanso y Naturaleza</title>
+ <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ <style>
+ :root {
+ --fucsia-principal: #1e5631;
+ --fucsia-oscuro: #153e22;
+ --fucsia-claro: #d1fae5;
+ --verde-pastel: #a7f3d0;
+ --verde-oscuro: #1e5631;
+ --pielcita: #fed7aa;
+ --pielcita-suave: #f0fdf4;
+ --gris-texto: #475569;
+ --blanco: #ffffff;
+ --sombra: 0 10px 25px rgba(30, 86, 49, 0.12);
+ --transicion: all 0.3s ease;
+ --btn-custom-bg: #1e5631;
+ --btn-custom-border: #3a7d54;
+ --btn-custom-text: #ffffff;
+ --btn-custom-hover-bg: #3a7d54;
+ --btn-custom-hover-text: #ffffff;
+ --btn-custom-active-bg: #153e22;
+ --bg-body: #f0fdf4;
+ --bg-card: #ffffff;
+ --text-main: #153e22;
+ --text-sub: #475569;
+ --header-bg: #1e5631;
+ }
+
+ body.dark-mode {
+ --fucsia-principal: #3a7d54;
+ --fucsia-claro: #064e3b;
+ --verde-pastel: #6ee7b7;
+ --pielcita: #fb923c;
+ --gris-texto: #cbd5e1;
+ --blanco: #0f2928;
+ --sombra: 0 10px 25px rgba(0, 0, 0, 0.4);
+ --btn-custom-bg: #1e5631;
+ --btn-custom-border: #3a7d54;
+ --btn-custom-text: #ffffff;
+ --btn-custom-hover-bg: #3a7d54;
+ --btn-custom-hover-text: #ffffff;
+ --btn-custom-active-bg: #153e22;
+ --bg-body: #042f2e;
+ --bg-card: #0f2928;
+ --text-main: #d1fae5;
+ --text-sub: #cbd5e1;
+ --header-bg: #1e5631;
+ }
+
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+
+ body {
+ font-family: 'Plus Jakarta Sans', sans-serif;
+ background-color: var(--bg-body);
+ color: var(--text-main);
+ line-height: 1.6;
+ padding-top: 125px;
+ transition: background-color 0.3s ease, color 0.3s ease;
+ }
+
+ h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+ header {
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ background-color: #1e5631;
+ backdrop-filter: blur(10px);
+ z-index: 1000;
+ box-shadow: 0 4px 12px rgba(30, 86, 49, 0.2);
+ }
+
+ .promo-banner {
+ position: fixed;
+ top: 72px;
+ left: 0;
+ width: 100%;
+ background: linear-gradient(135deg, #1e5631, #3a7d54);
+ color: #ffffff;
+ padding: 10px 20px;
+ text-align: center;
+ font-size: 0.92rem;
+ font-weight: 500;
+ z-index: 999;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ gap: 12px;
+ }
+
+ .promo-banner.hidden {
+ transform: translateY(-100%);
+ opacity: 0;
+ pointer-events: none;
+ }
+
+ .promo-banner a {
+ color: var(--pielcita);
+ font-weight: 700;
+ text-decoration: underline;
+ cursor: pointer;
+ }
+
+ .promo-close {
+ background: none;
+ border: none;
+ color: #ffffff;
+ font-size: 1.2rem;
+ cursor: pointer;
+ margin-left: 15px;
+ }
+
+ .nav-container {
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 12px 20px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ position: relative;
+ }
+
+ .logo {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ text-decoration: none;
+ color: #ffffff;
+ font-size: 1.3rem;
+ font-weight: 700;
+ }
+
+ .nav-links {
+ display: flex;
+ list-style: none;
+ gap: 6px;
+ align-items: center;
+ flex-wrap: wrap;
+ justify-content: flex-end;
+ }
+
+ .mobile-menu-btn {
+ display: none;
+ background: none;
+ border: none;
+ font-size: 1.5rem;
+ color: #ffffff;
+ cursor: pointer;
+ }
+
+ .nav-links button:not(#nav-contacto):not(.theme-toggle-btn):not(.lang-toggle-btn) {
+ background: #34d399;
+ border: 1px solid #10b981;
+ font-family: 'Plus Jakarta Sans', sans-serif;
+ color: #064e3b;
+ font-weight: 700;
+ font-size: 0.8rem;
+ cursor: pointer;
+ transition: var(--transicion);
+ padding: 6px 12px;
+ border-radius: 50px;
+ }
+
+ .nav-links button:not(#nav-contacto):not(.theme-toggle-btn):not(.lang-toggle-btn):hover {
+ background: #10b981;
+ color: #ffffff;
+ border-color: #059669;
+ transform: translateY(-2px);
+ }
+
+ .nav-links button:not(#nav-contacto):not(.theme-toggle-btn):not(.lang-toggle-btn):active {
+ background: #059669;
+ color: #ffffff;
+ border-color: #047857;
+ transform: translateY(0);
+ }
+
+ .nav-links button.active:not(#nav-contacto) {
+ background: #059669;
+ color: #ffffff;
+ border-color: #047857;
+ box-shadow: 0 2px 10px rgba(5, 150, 105, 0.55);
+ }
+
+ .nav-links button#nav-contacto {
+ background: #fed7aa;
+ border: 1px solid #fdba74;
+ font-family: 'Plus Jakarta Sans', sans-serif;
+ color: #153e22;
+ font-weight: 700;
+ font-size: 0.8rem;
+ cursor: pointer;
+ padding: 6px 12px;
+ border-radius: 50px;
+ transition: var(--transicion);
+ }
+
+ .nav-links button#nav-contacto:hover {
+ background: #fdba74;
+ transform: translateY(-2px);
+ }
+
+ .theme-toggle-btn {
+ background: #1e5631 !important;
+ border: 1px solid #3a7d54 !important;
+ color: #ffffff !important;
+ width: 34px;
+ height: 34px;
+ border-radius: 50% !important;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ cursor: pointer;
+ padding: 0 !important;
+ }
+
+ .lang-dropdown { position: relative; }
+
+ .lang-toggle-btn {
+ background: #1e5631 !important;
+ border: 1px solid #3a7d54 !important;
+ color: #ffffff !important;
+ height: 34px;
+ border-radius: 50px !important;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 4px;
+ cursor: pointer;
+ font-size: 0.8rem;
+ font-weight: 700;
+ padding: 0 10px !important;
+ }
+
+ .lang-menu {
+ position: absolute;
+ top: 44px;
+ right: 0;
+ background: var(--bg-card);
+ border-radius: 14px;
+ box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+ border: 1px solid #3a7d54;
+ min-width: 150px;
+ overflow: hidden;
+ display: none;
+ z-index: 1001;
+ }
+
+ .lang-menu.show { display: block; }
+
+ .lang-option {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ width: 100%;
+ padding: 10px 15px;
+ background: none;
+ border: none;
+ color: var(--text-main);
+ font-family: 'Plus Jakarta Sans', sans-serif;
+ font-size: 0.9rem;
+ cursor: pointer;
+ text-align: left;
+ }
+
+ .lang-option:hover { background: var(--verde-pastel); color: #1e5631; }
+
+ .lang-option.active {
+ background: var(--fucsia-claro);
+ color: #1e5631;
+ font-weight: 700;
+ }
+
+ .btn-whatsapp-nav {
+ background: #1e5631 !important;
+ color: #fff !important;
+ padding: 6px 12px !important;
+ border-radius: 50px !important;
+ font-weight: 700 !important;
+ display: flex !important;
+ align-items: center !important;
+ gap: 5px !important;
+ text-decoration: none !important;
+ border: 1px solid #3a7d54 !important;
+ font-size: 0.8rem;
+ }
+
+ .view-section {
+ display: none;
+ min-height: calc(100vh - 160px);
+ padding: 50px 20px;
+ max-width: 1200px;
+ margin: 0 auto;
+ }
+
+ .view-section.active-view { display: block; }
+
+ .hero {
+ height: calc(100vh - 80px);
+ height: calc(100svh - 80px);
+ background: linear-gradient(rgba(30, 86, 49, 0.45), rgba(30, 86, 49, 0.65)), url('fotos/portada.jpg');
+ background-size: cover;
+ background-position: center;
+ display: flex;
+ align-items: flex-end;
+ justify-content: center;
+ text-align: center;
+ padding: 0 20px 60px 20px;
+ margin: -50px -20px 40px -20px;
+ }
+
+ .hero h1 {
+ font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+ margin-bottom: 12px;
+ color: #fff;
+ text-shadow: 0 2px 10px rgba(30, 86, 49, 0.95);
+ }
+
+ .hero p {
+ font-size: clamp(1.05rem, 2vw, 1.35rem);
+ color: var(--pielcita);
+ text-shadow: 0 2px 8px rgba(30, 86, 49, 0.95);
+ font-weight: 700;
+ }
+
+ body.dark-mode .hero h1 { color: #ffffff; text-shadow: 0 2px 15px rgba(0, 0, 0, 0.95); }
+ body.dark-mode .hero p { color: #d1fae5; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95); }
+
+ .desc-container, .location-container {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 30px;
+ align-items: center;
+ background: var(--bg-card);
+ padding: 40px;
+ border-radius: 24px;
+ box-shadow: var(--sombra);
+ margin-top: 20px;
+ }
+
+ .desc-text h3, .location-info h3 {
+ font-size: 1.8rem;
+ margin-bottom: 15px;
+ color: #1e5631;
+ }
+
+ .desc-text p, .location-info p {
+ color: var(--text-sub);
+ margin-bottom: 15px;
+ }
+
+ .desc-highlights {
+ background: var(--bg-card);
+ padding: 25px;
+ border-radius: 16px;
+ border-left: 5px solid #1e5631;
+ border: 1px solid rgba(30, 86, 49, 0.2);
+ box-shadow: 0 4px 15px rgba(30, 86, 49, 0.08);
+ }
+
+ .desc-highlights h4 {
+ color: var(--text-main);
+ margin-bottom: 12px;
+ font-size: 1.15rem;
+ }
+
+ .desc-highlights ul, .tarifa-card ul {
+ list-style: none;
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+ margin-top: 10px;
+ }
+
+ .desc-highlights ul li, .tarifa-card ul li {
+ color: var(--text-main);
+ font-weight: 500;
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ font-size: 0.95rem;
+ }
+
+ .desc-highlights ul li i {
+ color: #1e5631;
+ font-size: 1.1rem;
+ }
+
+ .section-header { text-align: center; margin-bottom: 40px; }
+ .section-header h2 { font-size: clamp(2rem, 3vw, 2.5rem); margin-bottom: 10px; color: #1e5631; }
+ .section-header p { color: var(--text-sub); max-width: 600px; margin: 0 auto; }
+
+ .divider {
+ width: 50px;
+ height: 3px;
+ background-color: #1e5631;
+ margin: 15px auto 0;
+ border-radius: 2px;
+ }
+
+ .info-grid, .tarifa-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+ gap: 30px;
+ }
+
+ .info-card, .tarifa-card {
+ background: var(--bg-card);
+ padding: 35px 25px;
+ border-radius: 20px;
+ text-align: center;
+ box-shadow: var(--sombra);
+ border-top: 4px solid #1e5631;
+ position: relative;
+ }
+
+ .info-card i { font-size: 2.5rem; color: #1e5631; margin-bottom: 20px; }
+
+ .gallery-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+ gap: 20px;
+ }
+
+ .gallery-item {
+ position: relative;
+ border-radius: 16px;
+ overflow: hidden;
+ height: 250px;
+ cursor: pointer;
+ border: 2px solid #3a7d54;
+ background: #cfe9d8;
+ }
+
+ .gallery-item img { 
+ width: 100%; 
+ height: 100%; 
+ object-fit: cover; 
+ transition: transform 0.5s ease;
+ }
+
+ .gallery-item:hover img {
+ transform: scale(1.1);
+ }
+
+ .gallery-overlay {
+ position: absolute;
+ bottom: 0;
+ left: 0;
+ width: 100%;
+ padding: 15px;
+ background: linear-gradient(to top, rgba(30, 86, 49, 0.9), transparent);
+ color: #fff;
+ font-weight: 600;
+ z-index: 2;
+ pointer-events: none;
+ }
+
+ .lightbox {
+ position: fixed;
+ top: 0; left: 0;
+ width: 100%; height: 100%;
+ background: rgba(15, 41, 40, 0.92);
+ display: none;
+ justify-content: center;
+ align-items: center;
+ z-index: 2000;
+ padding: 20px;
+ }
+
+ .lightbox.active { display: flex; }
+ .lightbox img { max-width: 92%; max-height: 80vh; object-fit: contain; border-radius: 12px; }
+ 
+ .lightbox-close {
+ position: absolute;
+ top: 25px; right: 30px;
+ color: #fff;
+ font-size: 2.5rem;
+ cursor: pointer;
+ background: none;
+ border: none;
+ z-index: 2001;
+ }
+
+ .lightbox-btn {
+ position: absolute;
+ top: 50%;
+ transform: translateY(-50%);
+ background: rgba(30, 86, 49, 0.8);
+ color: #fff;
+ border: none;
+ font-size: 2rem;
+ padding: 12px 18px;
+ cursor: pointer;
+ border-radius: 50%;
+ z-index: 2001;
+ transition: var(--transicion);
+ }
+
+ .lightbox-btn:hover {
+ background: #3a7d54;
+ transform: translateY(-50%) scale(1.1);
+ }
+
+ .lightbox-prev { left: 30px; }
+ .lightbox-next { right: 30px; }
+
+ .location-address {
+ display: flex;
+ align-items: flex-start;
+ gap: 12px;
+ background: var(--verde-pastel);
+ padding: 15px 20px;
+ border-radius: 12px;
+ margin-bottom: 25px;
+ color: #1e5631;
+ font-weight: 600;
+ }
+
+ .map-box { width: 100%; height: 350px; border-radius: 16px; overflow: hidden; }
+ .map-box iframe { width: 100%; height: 100%; border: 0; }
+
+ .faq-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+
+ .faq-item {
+ background: var(--bg-card);
+ border-radius: 16px;
+ box-shadow: var(--sombra);
+ overflow: hidden;
+ border-left: 5px solid #1e5631;
+ }
+
+ .faq-question {
+ width: 100%;
+ background: none;
+ border: none;
+ padding: 22px 25px;
+ text-align: left;
+ font-family: 'Plus Jakarta Sans', sans-serif;
+ font-size: 1.1rem;
+ font-weight: 600;
+ color: var(--text-main);
+ cursor: pointer;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ gap: 12px;
+ }
+
+ .faq-answer {
+ max-height: 0;
+ overflow: hidden;
+ padding: 0 25px;
+ color: var(--text-sub);
+ }
+
+ .faq-item.active .faq-answer {
+ max-height: 350px;
+ padding-bottom: 22px;
+ }
+
+ .contact-section {
+ background: linear-gradient(135deg, #153e22, #1e5631);
+ color: #fff;
+ text-align: center;
+ border-radius: 30px;
+ padding: 70px 30px;
+ max-width: 900px;
+ margin: 0 auto;
+ }
+
+ .btn-contact {
+ background-color: #3a7d54;
+ color: #fff;
+ padding: 16px 35px;
+ border-radius: 50px;
+ font-size: 1.15rem;
+ font-weight: 700;
+ text-decoration: none;
+ display: inline-flex;
+ align-items: center;
+ gap: 12px;
+ }
+
+ footer {
+ background-color: #1e5631;
+ color: #f0fdf4;
+ text-align: center;
+ padding: 30px 20px;
+ margin-top: 40px;
+ }
+
+ #slideshowBtn {
+ background: linear-gradient(135deg, #1e5631, #3a7d54);
+ color: white;
+ border: none;
+ padding: 10px 20px;
+ border-radius: 50px;
+ font-weight: 700;
+ font-size: 0.95rem;
+ cursor: pointer;
+ display: inline-flex;
+ align-items: center;
+ gap: 8px;
+ margin-top: 15px;
+ box-shadow: 0 4px 15px rgba(30, 86, 49, 0.3);
+ transition: var(--transicion);
+ }
+
+ #slideshowBtn:hover {
+ transform: translateY(-2px);
+ box-shadow: 0 6px 20px rgba(30, 86, 49, 0.45);
+ }
+
+ #manti-btn {
+ position: fixed;
+ right: 22px;
+ bottom: 22px;
+ width: 62px;
+ height: 62px;
+ border: none;
+ border-radius: 50%;
+ background: linear-gradient(135deg, #7c3aed, #c026d3);
+ color: white;
+ font-size: 1.5rem;
+ cursor: pointer;
+ box-shadow: 0 0 18px #b266ff, 0 0 40px rgba(178, 102, 255, 0.65);
+ z-index: 3000;
+ transition: 0.3s;
+ }
+
+ #manti-btn:hover {
+ transform: scale(1.08);
+ box-shadow: 0 0 26px #c77dff, 0 0 55px rgba(199, 125, 255, 0.8);
+ }
+
+ #manti-chat {
+ position: fixed;
+ right: 22px;
+ bottom: 95px;
+ width: 350px;
+ max-width: calc(100vw - 30px);
+ height: 480px;
+ background: var(--bg-card);
+ border-radius: 20px;
+ box-shadow: 0 0 25px rgba(178, 102, 255, 0.55), 0 15px 45px rgba(0,0,0,0.25);
+ overflow: hidden;
+ display: none;
+ flex-direction: column;
+ z-index: 3000;
+ border: 1px solid #b266ff;
+ }
+
+ #manti-chat.show {
+ display: flex;
+ }
+
+ .manti-header {
+ background: linear-gradient(135deg, #7c3aed, #c026d3);
+ color: white;
+ padding: 16px;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ }
+
+ .manti-title {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ font-weight: 700;
+ }
+
+ .manti-logo-container {
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ width: 34px;
+ height: 34px;
+ background: linear-gradient(135deg, #e9d5ff, #f0abfc);
+ border-radius: 50%;
+ position: relative;
+ box-shadow: 0 0 14px #d8b4fe;
+ animation: mantiFloat 3s ease-in-out infinite;
+ transition: var(--transicion);
+ cursor: pointer;
+ }
+
+ .manti-logo-container:hover {
+ transform: scale(1.12) translateY(-2px);
+ box-shadow: 0 0 18px rgba(30, 86, 49, 0.6);
+ }
+
+ .manti-logo-icon {
+ font-size: 0.95rem;
+ color: #7c3aed;
+ }
+
+ .manti-sparkle-mini {
+ position: absolute;
+ top: -3px;
+ right: -3px;
+ font-size: 0.65rem;
+ animation: mantiBlink 2.2s ease-in-out infinite;
+ filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8));
+ }
+
+ @keyframes mantiFloat {
+ 0%, 100% { transform: translateY(0); }
+ 50% { transform: translateY(-4px); }
+ }
+
+ @keyframes mantiBlink {
+ 0%, 100% { opacity: 0.4; transform: scale(0.85); }
+ 50% { opacity: 1; transform: scale(1.25); }
+ }
+
+ .manti-header-actions {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ }
+
+ #manti-clear, #manti-close {
+ background: none;
+ border: none;
+ color: white;
+ font-size: 1.15rem;
+ cursor: pointer;
+ transition: opacity 0.2s;
+ }
+
+ #manti-clear:hover, #manti-close:hover {
+ opacity: 0.7;
+ }
+
+ #manti-messages {
+ flex: 1;
+ padding: 15px;
+ overflow-y: auto;
+ display: flex;
+ flex-direction: column;
+ gap: 12px;
+ background: var(--bg-body);
+ }
+
+ .manti-message {
+ max-width: 85%;
+ padding: 12px 14px;
+ border-radius: 14px;
+ font-size: 0.9rem;
+ line-height: 1.4;
+ font-family: 'Plus Jakarta Sans', sans-serif;
+ }
+
+ .manti-bot {
+ align-self: flex-start;
+ background: var(--bg-card);
+ color: var(--text-main);
+ border: 1px solid rgba(178, 102, 255, 0.45);
+ box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+ border-top-left-radius: 4px;
+ }
+
+ .manti-user {
+ align-self: flex-end;
+ background: linear-gradient(135deg, #7c3aed, #c026d3);
+ color: white;
+ border-top-right-radius: 4px;
+ }
+
+ .manti-input-area {
+ display: flex;
+ gap: 8px;
+ padding: 12px;
+ border-top: 1px solid rgba(178, 102, 255, 0.3);
+ background: var(--bg-card);
+ }
+
+ #manti-input {
+ flex: 1;
+ border: 1px solid rgba(178, 102, 255, 0.6);
+ border-radius: 20px;
+ padding: 10px 14px;
+ outline: none;
+ background: var(--bg-body);
+ color: var(--text-main);
+ font-family: 'Plus Jakarta Sans', sans-serif;
+ font-size: 0.9rem;
+ }
+
+ #manti-send {
+ width: 42px;
+ height: 42px;
+ border: none;
+ border-radius: 50%;
+ background: linear-gradient(135deg, #7c3aed, #c026d3);
+ box-shadow: 0 0 10px rgba(178, 102, 255, 0.8);
+ color: white;
+ cursor: pointer;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ transition: transform 0.2s;
+ }
+
+ #manti-send:hover {
+ transform: scale(1.05);
+ }
+
+ .page-curtain {
+ position: fixed;
+ top: 0; left: 0;
+ width: 100%; height: 100%;
+ z-index: 5000;
+ background: linear-gradient(120deg, #153e22 0%, #1e5631 55%, #34d399 100%);
+ transform: translateX(-101%);
+ pointer-events: none;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ color: #ffffff;
+ font-size: 3rem;
+ will-change: transform;
+ }
+
+ .page-curtain i { opacity: 0; transition: opacity 0.3s ease 0.15s; }
+
+ .page-curtain.cover {
+ transform: translateX(0);
+ transition: transform 0.45s cubic-bezier(0.77, 0, 0.18, 1);
+ pointer-events: all;
+ }
+
+ .page-curtain.cover i { opacity: 1; }
+
+ .page-curtain.leave {
+ transform: translateX(101%);
+ transition: transform 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+ pointer-events: all;
+ }
+
+ @keyframes sectionIn {
+ from { opacity: 0; transform: translateY(30px); }
+ to { opacity: 1; transform: translateY(0); }
+ }
+
+ @keyframes itemIn {
+ from { opacity: 0; transform: translateY(35px) scale(0.94); }
+ to { opacity: 1; transform: translateY(0) scale(1); }
+ }
+
+ @keyframes headerIn {
+ from { opacity: 0; transform: translateY(-20px); }
+ to { opacity: 1; transform: translateY(0); }
+ }
+
+ .view-section.active-view { animation: sectionIn 0.6s ease both; }
+ .view-section.active-view .section-header { animation: headerIn 0.6s ease both; }
+
+ .view-section.active-view .info-card,
+ .view-section.active-view .tarifa-card,
+ .view-section.active-view .gallery-item,
+ .view-section.active-view .faq-item,
+ .view-section.active-view .desc-container,
+ .view-section.active-view .location-container,
+ .view-section.active-view .contact-section {
+ animation: itemIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+ }
+
+ .view-section.active-view .info-card:nth-child(2),
+ .view-section.active-view .tarifa-card:nth-child(2),
+ .view-section.active-view .gallery-item:nth-child(2),
+ .view-section.active-view .faq-item:nth-child(2) { animation-delay: 0.12s; }
+
+ .view-section.active-view .info-card:nth-child(3),
+ .view-section.active-view .tarifa-card:nth-child(3),
+ .view-section.active-view .gallery-item:nth-child(3),
+ .view-section.active-view .faq-item:nth-child(3) { animation-delay: 0.24s; }
+
+ .view-section.active-view .gallery-item:nth-child(4),
+ .view-section.active-view .faq-item:nth-child(4) { animation-delay: 0.36s; }
+
+ .view-section.active-view .gallery-item:nth-child(5),
+ .view-section.active-view .faq-item:nth-child(5) { animation-delay: 0.48s; }
+
+ .view-section.active-view .gallery-item:nth-child(n+6) { animation-delay: 0.6s; }
+
+ @media (max-width: 500px) {
+ #manti-chat {
+ right: 10px;
+ bottom: 85px;
+ width: calc(100vw - 20px);
+ height: 450px;
+ }
+
+ #manti-btn {
+ right: 15px;
+ bottom: 15px;
+ }
+
+ .lightbox-btn {
+ font-size: 1.5rem;
+ padding: 8px 12px;
+ top: auto;
+ bottom: 25px;
+ transform: none;
+ }
+ .lightbox-btn:hover { transform: scale(1.1); }
+ .lightbox-prev { left: 10px; }
+ .lightbox-next { right: 10px; }
+
+ .gallery-item { height: 200px; }
+ }
+
+ @media (max-width: 1100px) {
+ .mobile-menu-btn { display: block; }
+ .nav-links {
+ display: none;
+ position: absolute;
+ top: 100%;
+ left: 0;
+ width: 100%;
+ background: #1e5631;
+ flex-direction: column;
+ align-items: stretch;
+ padding: 20px;
+ box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+ }
+ .nav-links.show { display: flex; }
+ .nav-links li { width: 100%; }
+ .nav-links button, .nav-links a { width: 100%; justify-content: center; }
+ .lang-menu { right: auto; left: 0; }
+ }
+
+ @media (max-width: 900px) {
+ .desc-container, .location-container { grid-template-columns: 1fr; }
+ }
+ </style>
+</head>
+<body id="pageBody">
+
+ <div class="page-curtain" id="pageCurtain" aria-hidden="true"><i class="fa-solid fa-water"></i></div>
+
+ <div class="promo-banner" id="promoBanner">
+ <span>
+ <i class="fa-solid fa-gift"></i>
+ <span id="t-promo">¡Aprovechá un 10% de descuento abonando por transferencia!</span>
+ <a onclick="switchView('promociones', event)" id="t-promo-link">Ver detalles</a>
+ </span>
+ <button class="promo-close" onclick="closePromoBanner()">×</button>
+ </div>
+
+ <header>
+ <div class="nav-container">
+ <a href="#inicio" class="logo" onclick="switchView('inicio', event)">
+ <i class="fa-solid fa-water"></i>
+ <span id="t-logo">Cabañas El Manantial</span>
+ </a>
+
+ <button class="mobile-menu-btn" onclick="toggleMobileMenu()" id="mobileMenuBtn" aria-label="Abrir menú">
+ <i class="fa-solid fa-bars" id="menuIcon"></i>
+ </button>
+
+ <ul class="nav-links" id="navLinks">
+ <li><button onclick="switchView('inicio', event)" class="active" id="nav-inicio">Inicio</button></li>
+ <li><button onclick="switchView('atractivos', event)" id="nav-atractivos">Atractivos</button></li>
+ <li><button onclick="switchView('tarifas', event)" id="nav-tarifas">Tarifas</button></li>
+ <li><button onclick="switchView('promociones', event)" id="nav-promociones">Promociones</button></li>
+ <li><button onclick="switchView('galeria', event)" id="nav-galeria">Galería</button></li>
+ <li><button onclick="switchView('ubicacion', event)" id="nav-ubicacion">Ubicación</button></li>
+ <li><button onclick="switchView('ayuda', event)" id="nav-ayuda">Ayuda</button></li>
+ <li><button onclick="switchView('contacto', event)" id="nav-contacto">Contacto</button></li>
+ <li class="lang-dropdown">
+ <button type="button" class="lang-toggle-btn" id="langBtn">
+ <i class="fa-solid fa-globe"></i>
+ <span id="currentLangLabel">ES</span>
+ <i class="fa-solid fa-chevron-down" style="font-size:0.65rem;"></i>
+ </button>
+ <div class="lang-menu" id="langMenu">
+ <button type="button" class="lang-option active" data-lang="es">Español</button>
+ <button type="button" class="lang-option" data-lang="en">English</button>
+ <button type="button" class="lang-option" data-lang="de">Deutsch</button>
+ </div>
+ </li>
+ <li>
+ <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn" title="Cambiar modo">
+ <i class="fa-solid fa-moon" id="themeIcon"></i>
+ </button>
+ </li>
+ <li>
+ <a id="wa-nav" href="https://wa.me/5493743619562?text=Hola!%20Quisiera%20consultar%20disponibilidad%20en%20Cabañas%20El%20Manantial" class="btn-whatsapp-nav" target="_blank" rel="noopener">
+ <i class="fa-brands fa-whatsapp"></i>
+ <span id="t-btn-consultar">Consultar</span>
+ </a>
+ </li>
+ </ul>
+ </div>
+ </header>
+
+ <section id="inicio" class="view-section active-view">
+ <div class="hero">
+ <div class="hero-content">
+ <h1 id="t-hero-title">Cabañas El Manantial</h1>
+ <p id="t-hero-subtitle">Un espacio único rodeado de naturaleza, confort y tranquilidad absoluta.</p>
+ </div>
+ </div>
+ <div class="desc-container">
+ <div class="desc-text">
+ <h3 id="t-welcome-title">Bienvenidos a Cabañas El Manantial</h3>
+ <p id="t-welcome-p1">Te invitamos a vivir unos días de descanso inigualables, rodeado de vegetación y la más absoluta tranquilidad. Nuestras instalaciones están pensadas para ofrecerte el equilibrio perfecto entre calidez rústica y comodidad moderna.</p>
+ <p id="t-welcome-p2">La cabaña cuenta con un diseño artesanal construido en un 50% de pino y un 50% de eucalipto, ofreciendo capacidad para alojar cómodamente hasta 8 personas y disponiendo de 2 baños privados completos.</p>
+ </div>
+ <div class="desc-highlights">
+ <h4 id="t-highlights-title">Lo más destacado:</h4>
+ <ul>
+ <li><i class="fa-solid fa-water-ladder"></i> <span id="t-h1">Pileta privada exclusiva para tu grupo.</span></li>
+ <li><i class="fa-solid fa-fire-burner"></i> <span id="t-h2">Parrilla propia para disfrutar asados al aire libre.</span></li>
+ <li><i class="fa-solid fa-users"></i> <span id="t-h3">Gran capacidad para hasta 8 personas.</span></li>
+ <li><i class="fa-solid fa-bath"></i> <span id="t-h4">Doble baño privado completo.</span></li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <section id="atractivos" class="view-section">
+ <div class="section-header">
+ <h2 id="t-atr-title">Comodidad y Calidez</h2>
+ <div class="divider"></div>
+ <p id="t-atr-sub">Diseñado para ofrecerte una estadía inigualable con todas las comodidades.</p>
+ </div>
+ <div class="info-grid">
+ <div class="info-card">
+ <i class="fa-solid fa-water-ladder"></i>
+ <h3 id="t-c1-title">Pileta y Parrilla Privada</h3>
+ <p id="t-c1-text">Disfrutá de momentos únicos al aire libre con tu pileta privada y zona de parrilla exclusiva.</p>
+ </div>
+ <div class="info-card">
+ <i class="fa-solid fa-users"></i>
+ <h3 id="t-c2-title">Gran Capacidad</h3>
+ <p id="t-c2-text">Espacio amplio preparado para hospedar cómodamente hasta 8 personas.</p>
+ </div>
+ <div class="info-card">
+ <i class="fa-solid fa-tree"></i>
+ <h3 id="t-c3-title">Construcción en Madera</h3>
+ <p id="t-c3-text">Estructura artesanal elaborada en un 50% de pino y un 50% de eucalipto con doble baño privado.</p>
+ </div>
+ </div>
+ </section>
+
+ <section id="tarifas" class="view-section">
+ <div class="section-header">
+ <h2 id="t-tar-title">Tarifas y Condiciones</h2>
+ <div class="divider"></div>
+ <p id="t-tar-sub">Información útil para planificar tu estadía de forma transparente.</p>
+ </div>
+ <div class="tarifa-grid">
+ <div class="tarifa-card">
+ <h3 id="t-ta1-title">Estadía y Capacidad</h3>
+ <ul>
+ <li id="t-ta1-1">Capacidad total: Hasta 8 personas.</li>
+ <li id="t-ta1-2">Incluye pileta privada con parrilla.</li>
+ <li id="t-ta1-3">Entorno completamente privado y natural.</li>
+ </ul>
+ </div>
+ <div class="tarifa-card">
+ <h3 id="t-ta2-title">Horarios de Ingreso</h3>
+ <ul>
+ <li id="t-ta2-1">Check-in: A partir de las 14:00 hs.</li>
+ <li id="t-ta2-2">Check-out: Hasta las 10:00 hs.</li>
+ <li id="t-ta2-3">Flexibilidad sujeta a disponibilidad previa.</li>
+ </ul>
+ </div>
+ <div class="tarifa-card">
+ <h3 id="t-ta3-title">Reservas y Seña</h3>
+ <ul>
+ <li id="t-ta3-1">Se reserva mediante seña previa por transferencia.</li>
+ <li id="t-ta3-2">El saldo restante se abona al ingresar.</li>
+ <li id="t-ta3-3">Contacto directo por WhatsApp para presupuestos.</li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <section id="promociones" class="view-section">
+ <div class="section-header">
+ <h2 id="t-pr-title">Promociones y Paquetes</h2>
+ <div class="divider"></div>
+ <p id="t-pr-sub">Aprovechá nuestros beneficios especiales para tu próxima escapada.</p>
+ </div>
+ <div class="tarifa-grid">
+ <div class="tarifa-card">
+ <h3 id="t-pr1-title">Escapada de Fin de Semana</h3>
+ <ul>
+ <li id="t-pr1-1">10% de descuento abonando por transferencia.</li>
+ <li id="t-pr1-2">Incluye late check-out sujeto a disponibilidad.</li>
+ <li id="t-pr1-3">Válido para reservas de Viernes a Domingo.</li>
+ </ul>
+ </div>
+ <div class="tarifa-card">
+ <h3 id="t-pr2-title">Estadías Prolongadas</h3>
+ <ul>
+ <li id="t-pr2-1">Quedate 4 noches o más y obtené un precio diferencial.</li>
+ <li id="t-pr2-2">Ideal para vacaciones o descanso en familia.</li>
+ <li id="t-pr2-3">Consultá por paquetes semanales por WhatsApp.</li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <section id="galeria" class="view-section">
+ <div class="section-header">
+ <h2 id="t-gal-title">Galería de Imágenes</h2>
+ <div class="divider"></div>
+ <p id="t-gal-sub">Hacé clic en cualquier foto para verla en tamaño completo.</p>
+ <button type="button" id="slideshowBtn" onclick="toggleSlideshow()">
+ <i class="fa-solid fa-play" id="slideshowIcon"></i> <span id="t-slideshow-btn">Presentación Automática</span>
+ </button>
+ </div>
+ <div class="gallery-grid">
+ <div class="gallery-item"><img src="fotos/portada.jpg" alt="Portada"><div class="gallery-overlay" id="t-g1">Portada</div></div>
+ <div class="gallery-item"><img src="fotos/exterior.jpg" alt="Exterior"><div class="gallery-overlay" id="t-g2">Exterior y Entorno</div></div>
+ <div class="gallery-item"><img src="fotos/sala-entrada.jpg" alt="Sala de entrada"><div class="gallery-overlay" id="t-g3">Sala de Entrada</div></div>
+ <div class="gallery-item"><img src="fotos/sala-sillones.jpg" alt="Estar y sillones"><div class="gallery-overlay" id="t-g4">Estar y Sillones</div></div>
+ <div class="gallery-item"><img src="fotos/hornalla.jpeg" alt="Hornalla"><div class="gallery-overlay" id="t-g6">Hornalla</div></div>
+ <div class="gallery-item"><img src="fotos/escalera.jpg" alt="Escalera"><div class="gallery-overlay" id="t-g7">Escalera</div></div>
+ <div class="gallery-item"><img src="fotos/arriba.jpeg" alt="Dormitorio planta alta"><div class="gallery-overlay" id="t-g8">Dormitorio Planta Alta</div></div>
+ <div class="gallery-item"><img src="fotos/dormitorio.jpeg" alt="Dormitorio planta baja"><div class="gallery-overlay" id="t-g9">Dormitorio Planta Baja</div></div>
+ <div class="gallery-item"><img src="fotos/bano.jpg" alt="Baño privado"><div class="gallery-overlay" id="t-g10">Baño Privado</div></div>
+ </div>
+ </section>
+
+ <div id="lightboxModal" class="lightbox" onclick="if(event.target === this) closeLightbox()">
+ <button class="lightbox-close" onclick="closeLightbox()">×</button>
+ <button class="lightbox-btn lightbox-prev" onclick="changeLightboxImage(-1)" title="Anterior">&#10094;</button>
+ <img id="lightboxImg" src="" alt="">
+ <button class="lightbox-btn lightbox-next" onclick="changeLightboxImage(1)" title="Siguiente">&#10095;</button>
+ </div>
+
+ <section id="ubicacion" class="view-section">
+ <div class="section-header">
+ <h2 id="t-ub-title">¿Dónde Encontrarnos?</h2>
+ <div class="divider"></div>
+ <p id="t-ub-sub">Ubicación exacta para que planifiques tu viaje sin complicaciones.</p>
+ </div>
+ <div class="location-container">
+ <div class="location-info">
+ <h3 id="t-ub-h3">Vení a disfrutar de la naturaleza</h3>
+ <p id="t-ub-p">Nuestras cabañas están emplazadas en un entorno de paz absoluta, ideales para desconectar de la rutina diaria.</p>
+ <div class="location-address">
+ <i class="fa-solid fa-location-dot"></i>
+ <div>
+ <span id="t-dir">Dirección:</span><br>
+ Barrio Kolpín, Calle México s/n (Jardín América, Misiones)
+ </div>
+ </div>
+ <a id="wa-ubi" href="https://wa.me/5493743619562?text=Hola!%20Quisiera%20pedirles%20la%20ubicación%20exacta" class="btn-whatsapp-nav" target="_blank" rel="noopener" style="display:inline-flex;padding:12px 25px;border-radius:50px;font-size:0.95rem;">
+ <i class="fa-brands fa-whatsapp"></i>
+ <span id="t-btn-ubicacion">Pedir ubicación por WhatsApp</span>
+ </a>
+ </div>
+ <div class="map-box">
+ <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540!2d-55.23!3d-27.05!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s27%C2%B003%2700.0%22S+55%C2%B023%2748.0%22W!5e0!3m2!1ses!2sar!4v1!5m2!1ses!2sar" allowfullscreen="" loading="lazy"></iframe>
+ </div>
+ </div>
+ </section>
+
+ <section id="ayuda" class="view-section">
+ <div class="section-header">
+ <h2 id="t-ay-title">Ayuda y Consultas Frecuentes</h2>
+ <div class="divider"></div>
+ <p id="t-ay-sub">Todo lo que necesitás saber antes de tu estadía, resuelto al instante.</p>
+ </div>
+ <div class="faq-container">
+ <div class="faq-item">
+ <button class="faq-question" onclick="toggleFaq(this)">
+ <span id="t-faq1-q">¿Qué medios de pago aceptan para las reservas?</span>
+ <i class="fa-solid fa-chevron-down"></i>
+ </button>
+ <div class="faq-answer" id="t-faq1-a">Las reservas y señas se pueden realizar mediante transferencia bancaria (con un 10% de descuento).</div>
+ </div>
+ <div class="faq-item">
+ <button class="faq-question" onclick="toggleFaq(this)">
+ <span id="t-faq2-q">¿La cabaña incluye ropa de cama y toallas?</span>
+ <i class="fa-solid fa-chevron-down"></i>
+ </button>
+ <div class="faq-answer" id="t-faq2-a">Sí, se entrega equipada con ropa de cama básica para todos los huéspedes.</div>
+ </div>
+ <div class="faq-item">
+ <button class="faq-question" onclick="toggleFaq(this)">
+ <span id="t-faq3-q">¿Se puede hacer asado?</span>
+ <i class="fa-solid fa-chevron-down"></i>
+ </button>
+ <div class="faq-answer" id="t-faq3-a">¡Sí! La cabaña cuenta con una parrilla propia y exclusiva para disfrutar de ricos asados al aire libre.</div>
+ </div>
+ <div class="faq-item">
+ <button class="faq-question" onclick="toggleFaq(this)">
+ <span id="t-faq4-q">¿Hay garage o estacionamiento?</span>
+ <i class="fa-solid fa-chevron-down"></i>
+ </button>
+ <div class="faq-answer" id="t-faq4-a">Sí, contamos con espacio seguro y cómodo dentro del predio para estacionar tu vehículo.</div>
+ </div>
+ <div class="faq-item">
+ <button class="faq-question" onclick="toggleFaq(this)">
+ <span id="t-faq5-q">¿Se pueden llevar mascotas?</span>
+ <i class="fa-solid fa-chevron-down"></i>
+ </button>
+ <div class="faq-answer" id="t-faq5-a">Para mantener la higiene y tranquilidad general, por el momento no se permiten mascotas, pero podés consultarnos por WhatsApp ante cualquier duda especial.</div>
+ </div>
+ </div>
+ </section>
+
+ <section id="contacto" class="view-section">
+ <div class="contact-section">
+ <h2 id="t-co-title">¿Tenés alguna consulta?</h2>
+ <p id="t-co-text">Escribinos por WhatsApp y te responderemos al instante.</p>
+ <a id="wa-contact" href="https://wa.me/5493743619562?text=Hola!%20Quisiera%20consultar%20disponibilidad" class="btn-contact" target="_blank" rel="noopener">
+ <i class="fa-brands fa-whatsapp"></i>
+ <span id="t-btn-contacto">Chatear por WhatsApp</span>
+ </a>
+ </div>
+ </section>
+
+ <button id="manti-btn" onclick="toggleMantiChat()" aria-label="Abrir Manti IA">
+ <i class="fa-solid fa-wand-magic-sparkles"></i>
+ </button>
+
+ <div id="manti-chat">
+ <div class="manti-header">
+ <div class="manti-title">
+ <div class="manti-logo-container" title="Manti IA">
+ <i class="fa-solid fa-seedling manti-logo-icon"></i>
+ <span class="manti-sparkle-mini">✨</span>
+ </div>
+ <span>Manti IA</span>
+ </div>
+ <div class="manti-header-actions">
+ <button id="manti-clear" onclick="clearMantiChat()" title="Borrar historial"><i class="fa-solid fa-trash-can"></i></button>
+ <button id="manti-close" onclick="toggleMantiChat()"><i class="fa-solid fa-xmark"></i></button>
+ </div>
+ </div>
+ <div id="manti-messages">
+ <div class="manti-message manti-bot">¡Hola! 😊 Qué gusto saludarte. Soy Manti, tu asistente virtual de Cabañas El Manantial. ¿En qué te puedo ayudar hoy?</div>
+ </div>
+ <div class="manti-input-area">
+ <input type="text" id="manti-input" placeholder="Escribí tu consulta..." onkeypress="handleMantiKeyPress(event)">
+ <button id="manti-send" onclick="sendMantiMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+ </div>
+ </div>
+
+ <footer>
+ <p id="t-footer">© 2026 Cabañas El Manantial. Todos los derechos reservados.</p>
+ </footer>
+
+ <script>
+ const T = {
+ es: {
+ title: "Cabañas El Manantial | Descanso y Naturaleza",
+ logo: "Cabañas El Manantial",
+ menuOpen: "Abrir menú",
+ themeTitle: "Cambiar modo claro u oscuro",
+ waNav: "https://wa.me/5493743619562?text=Hola!%20Quisiera%20consultar%20disponibilidad%20en%20Cabañas%20El%20Manantial",
+ waUbi: "https://wa.me/5493743619562?text=Hola!%20Quisiera%20pedirles%20la%20ubicacion%20exacta",
+ waCo: "https://wa.me/5493743619562?text=Hola!%20Quisiera%20consultar%20disponibilidad",
+ langLabel: "ES",
+ nav_inicio: "Inicio",
+ nav_atractivos: "Atractivos",
+ nav_tarifas: "Tarifas",
+ nav_promociones: "Promociones",
+ nav_galeria: "Galería",
+ nav_ubicacion: "Ubicación",
+ nav_ayuda: "Ayuda",
+ nav_contacto: "Contacto",
+ promo: "¡Aprovechá un 10% de descuento abonando por transferencia!",
+ promoLink: "Ver detalles",
+ consultar: "Consultar",
+ heroTitle: "Cabañas El Manantial",
+ heroSub: "Un espacio único rodeado de naturaleza, confort y tranquilidad absoluta.",
+ welcomeTitle: "Bienvenidos a Cabañas El Manantial",
+ welcomeP1: "Te invitamos a vivir unos días de descanso inigualables, rodeado de vegetación y la más absoluta tranquilidad. Nuestras instalaciones están pensadas para ofrecerte el equilibrio perfecto entre calidez rústica y comodidad moderna.",
+ welcomeP2: "La cabaña cuenta con un diseño artesanal construido en un 50% de pino y un 50% de eucalipto, ofreciendo capacidad para alojar cómodamente hasta 8 personas y disponiendo de 2 baños privados completos.",
+ highlights: "Lo más destacado:",
+ h1: "Pileta privada exclusiva para tu grupo.",
+ h2: "Parrilla propia para disfrutar asados al aire libre.",
+ h3: "Gran capacidad para hasta 8 personas.",
+ h4: "Doble baño privado completo.",
+ atrTitle: "Comodidad y Calidez",
+ atrSub: "Diseñado para ofrecerte una estadía inigualable con todas las comodidades.",
+ c1t: "Pileta y Parrilla Privada",
+ c1x: "Disfrutá de momentos únicos al aire libre con tu pileta privada y zona de parrilla exclusiva.",
+ c2t: "Gran Capacidad",
+ c2x: "Espacio amplio preparado para hospedar cómodamente hasta 8 personas.",
+ c3t: "Construcción en Madera",
+ c3x: "Estructura artesanal elaborada en un 50% de pino y un 50% de eucalipto con doble baño privado.",
+ tarTitle: "Tarifas y Condiciones",
+ tarSub: "Información útil para planificar tu estadía de forma transparente.",
+ ta1t: "Estadía y Capacidad",
+ ta11: "Capacidad total: Hasta 8 personas.",
+ ta12: "Incluye pileta privada con parrilla.",
+ ta13: "Entorno completamente privado y natural.",
+ ta2t: "Horarios de Ingreso",
+ ta21: "Check-in: A partir de las 14:00 hs.",
+ ta22: "Check-out: Hasta las 10:00 hs.",
+ ta23: "Flexibilidad sujeta a disponibilidad previa.",
+ ta3t: "Reservas y Seña",
+ ta31: "Se reserva mediante seña previa por transferencia.",
+ ta32: "El saldo restante se abona al ingresar.",
+ ta33: "Contacto directo por WhatsApp para presupuestos.",
+ prTitle: "Promociones y Paquetes",
+ prSub: "Aprovechá nuestros beneficios especiales para tu próxima escapada.",
+ pr1t: "Escapada de Fin de Semana",
+ pr11: "10% de descuento abonando por transferencia.",
+ pr12: "Incluye late check-out sujeto a disponibilidad.",
+ pr13: "Válido para reservas de Viernes a Domingo.",
+ pr2t: "Estadías Prolongadas",
+ pr21: "Quedate 4 noches o más y obtené un precio diferencial.",
+ pr22: "Ideal para vacaciones o descanso en familia.",
+ pr23: "Consultá por paquetes semanales por WhatsApp.",
+ galTitle: "Galería de Imágenes",
+ galSub: "Hacé clic en cualquier foto para verla en tamaño completo.",
+ slideshowPlay: "Presentación Automática",
+ slideshowPause: "Pausar Presentación",
+ g1: "Portada", g2: "Exterior y Entorno", g3: "Sala de Entrada", g4: "Estar y Sillones", g5: "Vista al Exterior",
+ g6: "Hornalla", g7: "Escalera", g8: "Dormitorio Planta Alta", g9: "Dormitorio Planta Baja", g10: "Baño Privado",
+ ubTitle: "¿Dónde Encontrarnos?",
+ ubSub: "Ubicación exacta para que planifiques tu viaje sin complicaciones.",
+ ubH3: "Vení a disfrutar de la naturaleza",
+ ubP: "Nuestras cabañas están emplazadas en un entorno de paz absoluta, ideales para desconectar de la rutina diaria.",
+ dir: "Dirección:",
+ btnUbi: "Pedir ubicación por WhatsApp",
+ ayTitle: "Ayuda y Consultas Frecuentes",
+ aySub: "Todo lo que necesitás saber antes de tu estadía, resuelto al instante.",
+ faq1q: "¿Qué medios de pago aceptan para las reservas?",
+ faq1a: "Las reservas y señas se pueden realizar mediante transferencia bancaria (con un 10% de descuento).",
+ faq2q: "¿La cabaña incluye ropa de cama y toallas?",
+ faq2a: "Sí, se entrega equipada con ropa de cama básica para todos los huéspedes.",
+ faq3q: "¿Se puede hacer asado?",
+ faq3a: "¡Sí! La cabaña cuenta con una parrilla propia y exclusiva para disfrutar de ricos asados al aire libre.",
+ faq4q: "¿Hay garage o estacionamiento?",
+ faq4a: "Sí, contamos con espacio seguro y cómodo dentro del predio para estacionar tu vehículo.",
+ faq5q: "¿Se pueden llevar mascotas?",
+ faq5a: "Para mantener la higiene y tranquilidad general, por el momento no se permiten mascotas, pero podés consultarnos por WhatsApp ante cualquier duda especial.",
+ coTitle: "¿Tenés alguna consulta?",
+ coText: "Escribinos por WhatsApp y te responderemos al instante.",
+ btnCo: "Chatear por WhatsApp",
+ footer: "© 2026 Cabañas El Manantial. Todos los derechos reservados."
+ },
+ en: {
+ title: "El Manantial Cabins | Rest and Nature",
+ logo: "El Manantial Cabins",
+ menuOpen: "Open menu",
+ themeTitle: "Switch light or dark mode",
+ waNav: "https://wa.me/5493743619562?text=Hello!%20I%20would%20like%20to%20check%20availability%20at%20El%20Manantial%20Cabins",
+ waUbi: "https://wa.me/5493743619562?text=Hello!%20Could%20you%20please%20send%20me%20the%20exact%20location",
+ waCo: "https://wa.me/5493743619562?text=Hello!%20I%20would%20like%20to%20check%20availability",
+ langLabel: "EN",
+ nav_inicio: "Home",
+ nav_atractivos: "Amenities",
+ nav_tarifas: "Rates",
+ nav_promociones: "Offers",
+ nav_galeria: "Gallery",
+ nav_ubicacion: "Location",
+ nav_ayuda: "Help",
+ nav_contacto: "Contact",
+ promo: "Get 10% off when paying by bank transfer!",
+ promoLink: "See details",
+ consultar: "Inquire",
+ heroTitle: "El Manantial Cabins",
+ heroSub: "A unique place surrounded by nature, comfort and complete peace.",
+ welcomeTitle: "Welcome to El Manantial Cabins",
+ welcomeP1: "We invite you to enjoy unforgettable days of rest, surrounded by greenery and complete calm. Our place offers a balance of rustic warmth and modern comfort.",
+ welcomeP2: "The cabin is handmade with 50% pine and 50% eucalyptus. It comfortably hosts up to 8 people and has 2 complete private bathrooms.",
+ highlights: "Highlights:",
+ h1: "Private pool exclusive for your group.",
+ h2: "Private barbecue for outdoor meals.",
+ h3: "Space for up to 8 people.",
+ h4: "Two complete private bathrooms.",
+ atrTitle: "Comfort and Warmth",
+ atrSub: "Designed for a special stay with all the comforts you need.",
+ c1t: "Private Pool and Barbecue",
+ c1x: "Enjoy outdoor time with your private pool and exclusive barbecue area.",
+ c2t: "Great Capacity",
+ c2x: "A wide space prepared to host up to 8 people comfortably.",
+ c3t: "Wooden Construction",
+ c3x: "Handmade structure made of 50% pine and 50% eucalyptus, with two private bathrooms.",
+ tarTitle: "Rates and Conditions",
+ tarSub: "Clear information to help you plan your stay.",
+ ta1t: "Stay and Capacity",
+ ta11: "Total capacity: up to 8 people.",
+ ta12: "Includes private pool and barbecue.",
+ ta13: "Completely private and natural setting.",
+ ta2t: "Arrival Times",
+ ta21: "Check-in: from 2:00 p.m.",
+ ta22: "Check-out: until 10:00 a.m.",
+ ta23: "Flexible times only if previously available.",
+ ta3t: "Booking and Deposit",
+ ta31: "Booking is made with a deposit by bank transfer.",
+ ta32: "The remaining amount is paid on arrival.",
+ ta33: "Contact us on WhatsApp for prices.",
+ prTitle: "Offers and Packages",
+ prSub: "Special benefits for your next getaway.",
+ pr1t: "Weekend Getaway",
+ pr11: "10% off when paying by bank transfer.",
+ pr12: "Late check-out included if available.",
+ pr13: "Valid for Friday to Sunday bookings.",
+ pr2t: "Longer Stays",
+ pr21: "Stay 4 nights or more and get a special price.",
+ pr22: "Ideal for holidays or family rest.",
+ pr23: "Ask about weekly packages on WhatsApp.",
+ galTitle: "Photo Gallery",
+ galSub: "Click any photo to see it in full size.",
+ slideshowPlay: "Automatic Slideshow",
+ slideshowPause: "Pause Slideshow",
+ g1: "Cover", g2: "Outside and surroundings", g3: "Entrance hall", g4: "Living room", g5: "Outdoor view",
+ g6: "Cooking area", g7: "Stairs", g8: "Upstairs bedroom", g9: "Ground-floor bedroom", g10: "Private bathroom",
+ ubTitle: "Where to find us",
+ ubSub: "Exact location so you can plan your trip easily.",
+ ubH3: "Come enjoy nature",
+ ubP: "Our cabins are in a very quiet place, ideal to disconnect from daily routine.",
+ dir: "Address:",
+ btnUbi: "Ask for the location on WhatsApp",
+ ayTitle: "Help and Common Questions",
+ aySub: "What you need to know before your stay.",
+ faq1q: "What payment methods do you accept for bookings?",
+ faq1a: "Bookings and deposits can be paid by bank transfer (with 10% discount).",
+ faq2q: "Does the cabin include bed linens and towels?",
+ faq2a: "Yes. Basic bed linens are provided for all guests.",
+ faq3q: "Can we have a barbecue / grill?",
+ faq3a: "Yes! The cabin features a private and exclusive barbecue area.",
+ faq4q: "Is there parking / garage?",
+ faq4a: "Yes, we have secure parking space available on-site for your vehicle.",
+ faq5q: "Are pets allowed?",
+ faq5a: "Pets are currently not allowed to maintain cleanliness, but feel free to ask on WhatsApp for any exceptions.",
+ coTitle: "Do you have a question?",
+ coText: "Write to us on WhatsApp and we will reply soon.",
+ btnCo: "Chat on WhatsApp",
+ footer: "© 2026 El Manantial Cabins. All rights reserved."
+ },
+ de: {
+ title: "Hütten El Manantial | Ruhe und Natur",
+ logo: "Hütten El Manantial",
+ menuOpen: "Menü öffnen",
+ themeTitle: "Hell- oder Dunkelmodus wechseln",
+ waNav: "https://wa.me/5493743619562?text=Hallo!%20Ich%20möchte%20die%20Verfügbarkeit%20in%20den%20Hütten%20El%20Manantial%20erfragen",
+ waUbi: "https://wa.me/5493743619562?text=Hallo!%20Könnten%20Sie%20mir%20bitte%20den%20genauen%20Standort%20schicken",
+ waCo: "https://wa.me/5493743619562?text=Hallo!%20Ich%20möchte%20die%20Verfügbarkeit%20erfragen",
+ langLabel: "DE",
+ nav_inicio: "Start",
+ nav_atractivos: "Ausstattung",
+ nav_tarifas: "Preise",
+ nav_promociones: "Angebote",
+ nav_galeria: "Galerie",
+ nav_ubicacion: "Lage",
+ nav_ayuda: "Hilfe",
+ nav_contacto: "Kontakt",
+ promo: "10 % Rabatt bei Zahlung per Überweisung!",
+ promoLink: "Details ansehen",
+ consultar: "Anfragen",
+ heroTitle: "Hütten El Manantial",
+ heroSub: "Ein einzigartiger Ort, umgeben von Natur, Komfort und absoluter Ruhe.",
+ welcomeTitle: "Willkommen in den Hütten El Manantial",
+ welcomeP1: "Wir laden Sie ein, unvergleichliche Tage der Erholung, umgeben von üppiger Natur und absoluter Ruhe, zu verbringen. Unsere Anlage bietet die perfekte Balance zwischen rustikaler Gemütlichkeit und modernem Komfort.",
+ welcomeP2: "Die Hütte besticht durch eine handgefertigte Architektur aus 50 % Kiefern- und 50 % Eukalyptusholz, bietet Platz für bis zu 8 Personen und verfügt über 2 komplette private Badezimmer.",
+ highlights: "Die Highlights:",
+ h1: "Exklusiver Privatpool für Ihre Gruppe.",
+ h2: "Eigener Grill für gesellige Grillabende im Freien.",
+ h3: "Große Kapazität für bis zu 8 Personen.",
+ h4: "Zwei komplette private Badezimmer.",
+ atrTitle: "Komfort und Gemütlichkeit",
+ atrSub: "Entwickelt, um Ihnen einen unvergleichlichen Aufenthalt mit allem Komfort zu bieten.",
+ c1t: "Privater Pool und Grill",
+ c1x: "Genießen Sie einzigartige Momente im Freien mit Ihrem privaten Pool und exklusiven Grillbereich.",
+ c2t: "Große Kapazität",
+ c2x: "Großzügiger Bereich, der darauf vorbereitet ist, bis zu 8 Personen bequem unterzubringen.",
+ c3t: "Holzbauweise",
+ c3x: "Handgefertigte Struktur aus 50 % Kiefern- und 50 % Eukalyptusholz mit zwei privaten Badezimmern.",
+ tarTitle: "Preise und Bedingungen",
+ tarSub: "Nützliche Informationen zur transparenten Planung Ihres Aufenthalts.",
+ ta1t: "Aufenthalt und Kapazität",
+ ta11: "Gesamtkapazität: Bis zu 8 Personen.",
+ ta12: "Inklusive privatem Pool mit Grill.",
+ ta13: "Vollständig private und natürliche Umgebung.",
+ ta2t: "Ankunftszeiten",
+ ta21: "Check-in: Ab 14:00 Uhr.",
+ ta22: "Check-out: Bis 10:00 Uhr.",
+ ta23: "Flexibilität vorbehaltlich vorheriger Verfügbarkeit.",
+ ta3t: "Reservierung und Anzahlung",
+ ta31: "Die Reservierung erfolgt durch eine Anzahlung per Überweisung.",
+ ta32: "Der Restbetrag wird beim Check-in bezahlt.",
+ ta33: "Direkter Kontakt über WhatsApp für Kostenvoranschläge.",
+ prTitle: "Angebote und Pakete",
+ prSub: "Nutzen Sie unsere Sondervorteile für Ihren nächsten Ausflug.",
+ pr1t: "Wochenend-Ausflug",
+ pr11: "10 % Rabatt bei Zahlung per Überweisung.",
+ pr12: "Inklusive späten Check-outs je nach Verfügbarkeit.",
+ pr13: "Gültig für Reservierungen von Freitag bis Sonntag.",
+ pr2t: "Längere Aufenthalte",
+ pr21: "Bleiben Sie 4 Nächte oder länger und erhalten Sie einen Sonderpreis.",
+ pr22: "Ideal für Urlaub oder Familienerholung.",
+ pr23: "Fragen Sie nach Wochenpaketen über WhatsApp.",
+ galTitle: "Bildergalerie",
+ galSub: "Klicken Sie auf ein beliebiges Foto, um es in Originalgröße zu sehen.",
+ slideshowPlay: "Automatische Diashow",
+ slideshowPause: "Diashow pausieren",
+ g1: "Titelbild", g2: "Außenbereich", g3: "Eingangshalle", g4: "Wohnbereich", g5: "Blick nach draußen",
+ g6: "Kochstelle", g7: "Treppe", g8: "Schlafzimmer oben", g9: "Schlafzimmer unten", g10: "Privates Badezimmer",
+ ubTitle: "Wo Sie uns finden",
+ ubSub: "Genaue Lage, damit Sie Ihre Reise problemlos planen können.",
+ ubH3: "Kommen Sie und genießen Sie die Natur",
+ ubP: "Unsere Hütten befinden sich in einer absolut friedlichen Umgebung, ideal um vom Alltag abschalten.",
+ dir: "Adresse:",
+ btnUbi: "Standort per WhatsApp anfragen",
+ ayTitle: "Hilfe und häufig gestellte Fragen",
+ aySub: "Alles, was Sie vor Ihrem Aufenthalt wissen müssen, sofort beantwortet.",
+ faq1q: "Welche Zahlungsmethoden akzeptieren Sie für Reservierungen?",
+ faq1a: "Reservierungen und Anzahlungen können per Banküberweisung erfolgen (mit 10 % Rabatt).",
+ faq2q: "Beinhaltet die Hütte Bettwäsche und Handtücher?",
+ faq2a: "Ja, sie wird mit einfacher Bettwäsche für alle Gäste ausgestattet übergeben.",
+ faq3q: "Kann man grillen?",
+ faq3a: "Ja! Die Hütte verfügt über eine eigene, exklusive Grillstelle für köstliche Grillabende im Freien.",
+ faq4q: "Gibt es Parkplätze oder eine Garage?",
+ faq4a: "Ja, wir haben einen sicheren und bequemen Parkplatz auf dem Gelände für Ihr Fahrzeug.",
+ faq5q: "Sind Haustiere erlaubt?",
+ faq5a: "Um die Hygiene und allgemeine Ruhe zu wahren, sind derzeit keine Haustiere erlaubt, aber Sie können uns bei Sonderfragen gerne über WhatsApp kontaktieren.",
+ coTitle: "Haben Sie eine Frage?",
+ coText: "Schreiben Sie uns auf WhatsApp und wir antworten Ihnen umgehend.",
+ btnCo: "Über WhatsApp chatten",
+ footer: "© 2026 Hütten El Manantial. Alle Rechte vorbehalten."
+ }
+ };
+
+ function setText(id, value) {
+ const el = document.getElementById(id);
+ if (el) el.textContent = value;
+ }
+
+ function applyLanguage(lang) {
+ const d = T[lang];
+ if (!d) return;
+
+ document.documentElement.lang = lang;
+ document.title = d.title;
+ setText("t-logo", d.logo);
+ setText("currentLangLabel", d.langLabel);
+
+ var menuBtn = document.getElementById("mobileMenuBtn");
+ if (menuBtn) menuBtn.setAttribute("aria-label", d.menuOpen);
+ var themeBtn = document.getElementById("themeBtn");
+ if (themeBtn) themeBtn.setAttribute("title", d.themeTitle);
+ var waNav = document.getElementById("wa-nav");
+ if (waNav) waNav.href = d.waNav;
+ var waUbi = document.getElementById("wa-ubi");
+ if (waUbi) waUbi.href = d.waUbi;
+ var waCo = document.getElementById("wa-contact");
+ if (waCo) waCo.href = d.waCo;
+
+ setText("nav-inicio", d.nav_inicio);
+ setText("nav-atractivos", d.nav_atractivos);
+ setText("nav-tarifas", d.nav_tarifas);
+ setText("nav-promociones", d.nav_promociones);
+ setText("nav-galeria", d.nav_galeria);
+ setText("nav-ubicacion", d.nav_ubicacion);
+ setText("nav-ayuda", d.nav_ayuda);
+ setText("nav-contacto", d.nav_contacto);
+ setText("t-promo", d.promo);
+ setText("t-promo-link", d.promoLink);
+ setText("t-btn-consultar", d.consultar);
+ setText("t-hero-title", d.heroTitle);
+ setText("t-hero-subtitle", d.heroSub);
+ setText("t-welcome-title", d.welcomeTitle);
+ setText("t-welcome-p1", d.welcomeP1);
+ setText("t-welcome-p2", d.welcomeP2);
+ setText("t-highlights-title", d.highlights);
+ setText("t-h1", d.h1);
+ setText("t-h2", d.h2);
+ setText("t-h3", d.h3);
+ setText("t-h4", d.h4);
+ setText("t-atr-title", d.atrTitle);
+ setText("t-atr-sub", d.atrSub);
+ setText("t-c1-title", d.c1t);
+ setText("t-c1-text", d.c1x);
+ setText("t-c2-title", d.c2t);
+ setText("t-c2-text", d.c2x);
+ setText("t-c3-title", d.c3t);
+ setText("t-c3-text", d.c3x);
+ setText("t-tar-title", d.tarTitle);
+ setText("t-tar-sub", d.tarSub);
+ setText("t-ta1-title", d.ta1t);
+ setText("t-ta1-1", d.ta11);
+ setText("t-ta1-2", d.ta12);
+ setText("t-ta1-3", d.ta13);
+ setText("t-ta2-title", d.ta2t);
+ setText("t-ta2-1", d.ta21);
+ setText("t-ta2-2", d.ta22);
+ setText("t-ta2-3", d.ta23);
+ setText("t-ta3-title", d.ta3t);
+ setText("t-ta3-1", d.ta31);
+ setText("t-ta3-2", d.ta32);
+ setText("t-ta3-3", d.ta33);
+ setText("t-pr-title", d.prTitle);
+ setText("t-pr-sub", d.prSub);
+ setText("t-pr1-title", d.pr1t);
+ setText("t-pr1-1", d.pr11);
+ setText("t-pr1-2", d.pr12);
+ setText("t-pr1-3", d.pr13);
+ setText("t-pr2-title", d.pr2t);
+ setText("t-pr2-1", d.pr21);
+ setText("t-pr2-2", d.pr22);
+ setText("t-pr2-3", d.pr23);
+ setText("t-gal-title", d.galTitle);
+ setText("t-gal-sub", d.galSub);
+ 
+ updateSlideshowButtonText();
+
+ setText("t-g1", d.g1); setText("t-g2", d.g2); setText("t-g3", d.g3); setText("t-g4", d.g4); setText("t-g5", d.g5);
+ setText("t-g6", d.g6); setText("t-g7", d.g7); setText("t-g8", d.g8); setText("t-g9", d.g9); setText("t-g10", d.g10);
+
+ setText("t-ub-title", d.ubTitle);
+ setText("t-ub-sub", d.ubSub);
+ setText("t-ub-h3", d.ubH3);
+ setText("t-ub-p", d.ubP);
+ setText("t-dir", d.dir);
+ setText("t-btn-ubicacion", d.btnUbi);
+ setText("t-ay-title", d.ayTitle);
+ setText("t-ay-sub", d.aySub);
+ setText("t-faq1-q", d.faq1q); setText("t-faq1-a", d.faq1a);
+ setText("t-faq2-q", d.faq2q); setText("t-faq2-a", d.faq2a);
+ setText("t-faq3-q", d.faq3q); setText("t-faq3-a", d.faq3a);
+ setText("t-faq4-q", d.faq4q); setText("t-faq4-a", d.faq4a);
+ setText("t-faq5-q", d.faq5q); setText("t-faq5-a", d.faq5a);
+ setText("t-co-title", d.coTitle);
+ setText("t-co-text", d.coText);
+ setText("t-btn-contacto", d.btnCo);
+ setText("t-footer", d.footer);
+
+ document.querySelectorAll(".lang-option").forEach(function(btn) {
+ btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+ });
+
+ window.currentLang = lang;
+ document.getElementById("langMenu").classList.remove("show");
+ }
+
+ function updateSlideshowButtonText() {
+ const lang = window.currentLang || "es";
+ const d = T[lang];
+ const textSpan = document.getElementById("t-slideshow-btn");
+ if (textSpan) {
+ textSpan.textContent = isSlideshowRunning ? d.slideshowPause : d.slideshowPlay;
+ }
+ }
+
+ let curtainBusy = false;
+
+ function switchView(viewId, event) {
+ if (event) event.preventDefault();
+ if (curtainBusy) return;
+
+ var current = document.querySelector(".view-section.active-view");
+ var curtain = document.getElementById("pageCurtain");
+
+ document.getElementById("navLinks").classList.remove("show");
+ document.getElementById("menuIcon").classList.remove("fa-xmark");
+ document.getElementById("menuIcon").classList.add("fa-bars");
+
+ if ((current && current.id === viewId) || !curtain) {
+ doSwitchView(viewId);
+ return;
+ }
+
+ curtainBusy = true;
+ curtain.className = "page-curtain cover";
+
+ setTimeout(function() {
+ doSwitchView(viewId);
+ curtain.className = "page-curtain leave";
+ setTimeout(function() {
+ curtain.className = "page-curtain";
+ curtainBusy = false;
+ }, 520);
+ }, 470);
+ }
+
+ function doSwitchView(viewId) {
+ stopSlideshow();
+ document.querySelectorAll(".view-section").forEach(function(sec) {
+ sec.classList.remove("active-view");
+ });
+ var target = document.getElementById(viewId);
+ if (target) target.classList.add("active-view");
+
+ document.querySelectorAll(".nav-links button:not(.theme-toggle-btn):not(.lang-toggle-btn)").forEach(function(btn) {
+ btn.classList.remove("active");
+ });
+ var activeBtn = document.getElementById("nav-" + viewId);
+ if (activeBtn) activeBtn.classList.add("active");
+
+ document.getElementById("navLinks").classList.remove("show");
+ document.getElementById("menuIcon").classList.remove("fa-xmark");
+ document.getElementById("menuIcon").classList.add("fa-bars");
+ window.scrollTo(0, 0);
+ }
+
+ function toggleMobileMenu() {
+ var navLinks = document.getElementById("navLinks");
+ var menuIcon = document.getElementById("menuIcon");
+ navLinks.classList.toggle("show");
+ if (navLinks.classList.contains("show")) {
+ menuIcon.classList.remove("fa-bars");
+ menuIcon.classList.add("fa-xmark");
+ } else {
+ menuIcon.classList.remove("fa-xmark");
+ menuIcon.classList.add("fa-bars");
+ }
+ }
+
+ function toggleTheme() {
+ var body = document.getElementById("pageBody");
+ var themeIcon = document.getElementById("themeIcon");
+ body.classList.toggle("dark-mode");
+ if (body.classList.contains("dark-mode")) {
+ themeIcon.classList.replace("fa-moon", "fa-sun");
+ } else {
+ themeIcon.classList.replace("fa-sun", "fa-moon");
+ }
+ }
+
+ function closePromoBanner() {
+ document.getElementById("promoBanner").classList.add("hidden");
+ document.body.style.paddingTop = "80px";
+ }
+
+ function toggleFaq(button) {
+ var item = button.parentElement;
+ document.querySelectorAll(".faq-item").forEach(function(i) {
+ if (i !== item) i.classList.remove("active");
+ });
+ item.classList.toggle("active");
+ }
+
+ const EXTS = ['jpg', 'jpeg', 'png', 'webp', 'JPG', 'JPEG', 'PNG'];
+ let galleryImgs = [];
+ let currentLightboxIndex = 0;
+ let slideshowInterval = null;
+ let isSlideshowRunning = false;
+
+ function imgFallback(img) {
+ if (!img.dataset.orig) img.dataset.orig = img.getAttribute('src');
+ const base = img.dataset.orig.replace(/\.[^./]+$/, '');
+ const options = EXTS.map(function(e) { return base + '.' + e; })
+ .filter(function(u) { return u !== img.dataset.orig; });
+ const i = parseInt(img.dataset.try || '0', 10);
+ if (i >= options.length) return;
+ img.dataset.try = i + 1;
+ img.src = options[i];
+ }
+
+ function watchImg(img) {
+ img.addEventListener('error', function() { imgFallback(img); });
+ if (img.complete && img.naturalWidth === 0) imgFallback(img);
+ }
+
+ function getSrc(i) {
+ return galleryImgs[i].currentSrc || galleryImgs[i].src;
+ }
+
+ function openLightbox(index) {
+ currentLightboxIndex = index;
+ document.getElementById("lightboxImg").src = getSrc(index);
+ document.getElementById("lightboxModal").classList.add("active");
+ }
+
+ function closeLightbox() {
+ stopSlideshow();
+ document.getElementById("lightboxModal").classList.remove("active");
+ }
+
+ function changeLightboxImage(direction) {
+ currentLightboxIndex = (currentLightboxIndex + direction + galleryImgs.length) % galleryImgs.length;
+ document.getElementById("lightboxImg").src = getSrc(currentLightboxIndex);
+ }
+
+ document.addEventListener('keydown', (e) => {
+ const lightbox = document.getElementById('lightboxModal');
+ if (lightbox && lightbox.classList.contains('active')) {
+ if (e.key === 'ArrowLeft') {
+ changeLightboxImage(-1);
+ } else if (e.key === 'ArrowRight') {
+ changeLightboxImage(1);
+ } else if (e.key === 'Escape') {
+ closeLightbox();
+ }
+ }
+ });
+
+ function toggleSlideshow() {
+ if (isSlideshowRunning) {
+ stopSlideshow();
+ } else {
+ startSlideshow();
+ }
+ }
+
+ function startSlideshow() {
+ isSlideshowRunning = true;
+ const icon = document.getElementById("slideshowIcon");
+ if (icon) icon.classList.replace("fa-play", "fa-pause");
+ updateSlideshowButtonText();
+
+ openLightbox(currentLightboxIndex);
+
+ slideshowInterval = setInterval(() => changeLightboxImage(1), 3000);
+ }
+
+ function stopSlideshow() {
+ if (!isSlideshowRunning) return;
+ isSlideshowRunning = false;
+ clearInterval(slideshowInterval);
+ slideshowInterval = null;
+ const icon = document.getElementById("slideshowIcon");
+ if (icon) {
+ icon.classList.replace("fa-pause", "fa-play");
+ }
+ updateSlideshowButtonText();
+ }
+
+ function toggleMantiChat() {
+ const chat = document.getElementById('manti-chat');
+ chat.classList.toggle('show');
+ }
+
+ function clearMantiChat() {
+ const messages = document.getElementById('manti-messages');
+ messages.innerHTML = `<div class="manti-message manti-bot">¡Hola! 😊 Qué gusto saludarte. Soy Manti, tu asistente virtual de Cabañas El Manantial. ¿En qué te puedo ayudar hoy?</div>`;
+ }
+
+ function handleMantiKeyPress(event) {
+ if (event.key === 'Enter') {
+ sendMantiMessage();
+ }
+ }
+
+ function sendMantiMessage() {
+ const input = document.getElementById('manti-input');
+ const messages = document.getElementById('manti-messages');
+ const text = input.value.trim();
+ if (!text) return;
+
+ const userMsg = document.createElement('div');
+ userMsg.className = 'manti-message manti-user';
+ userMsg.textContent = text;
+ messages.appendChild(userMsg);
+ input.value = '';
+ messages.scrollTop = messages.scrollHeight;
+
+ setTimeout(() => {
+ const botMsg = document.createElement('div');
+ botMsg.className = 'manti-message manti-bot';
+ 
+ const textNorm = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+ const hasAny = (keywords) => keywords.some(kw => textNorm.includes(kw));
+ let respuesta = "";
+
+ const words = textNorm.split(/[^a-z0-9]+/);
+ const saludos = ['hola', 'holi', 'olu', 'holaa', 'holaaa', 'holis', 'buenas', 'saludos', 'holanda', 'buenass', 'hey', 'alo', 'hi', 'hello'];
+ const esSaludo = words.some(w => saludos.includes(w)) || hasAny(['que tal', 'buenas tardes', 'buenas noches', 'buenos dias']);
+
+ if (esSaludo) {
+ respuesta = "¡Hola! 😊 Qué lindo tenerte por acá. Soy Manti, tu asistente de Cabañas El Manantial. ¿En qué te puedo ayudar hoy o qué te gustaría saber?";
+ } 
+ else if (hasAny(['alcohol', 'alcoholica', 'alcoholicas', 'bebida', 'bebidas', 'cerveza', 'cervezas', 'vino', 'fernet', 'trago', 'tragos', 'tomar', 'tomo'])) {
+ respuesta = "¡Sí! 🍻 Podés disfrutar de bebidas alcohólicas dentro del predio con moderación y responsabilidad, respetando siempre la tranquilidad de los demás y el cuidado de las instalaciones. Si vas a manejar, ¡recordá no hacerlo después de tomar! 💚";
+ }
+ else if (hasAny(['techo', 'techado', 'techada', 'cubierto', 'cubierta', 'resguardar', 'resguardo', 'lluvia', 'granizo', 'sol al auto'])) {
+ respuesta = "¡Sí! 🚗 Contamos con un lugar techado dentro del predio para que resguardes tu auto de la lluvia y del sol durante toda tu estadía.";
+ }
+ else if (hasAny(['articulos', 'elementos', 'limpieza', 'shampoo', 'champu', 'jabon', 'papel higienico', 'higienico', 'amenities', 'productos de'])) {
+ respuesta = "¡Sí! 🧼 En el baño vas a encontrar los elementos básicos de limpieza e higiene (como papel higiénico y jabón) para que llegues y te instales sin preocupaciones. Para cualquier necesidad extra, escribinos por WhatsApp. 🚿";
+ }
+ else if (hasAny(['pileta', 'piscina', 'pile', 'piletita', 'pileta privada', 'pileta propia'])) {
+ respuesta = "¡Sí, totalmente! 🏊‍♂️ Contamos con pileta privada exclusiva para tu grupo, por lo que no la compartís con nadie más durante tu estadía.";
+ } 
+ else if (hasAny(['bano', 'banos', 'baño', 'baños', 'sanitario', 'sanitarios', 'ducha', 'duchas'])) {
+ respuesta = "¡Sí! La cabaña cuenta con 2 baños privados completos totalmente equipados para la comodidad de todo tu grupo 🚿✨";
+ } 
+ else if (hasAny(['garage', 'cochera', 'estacionamiento', 'estacionar', 'auto', 'vehiculo', 'vehiculos', 'dejar el auto', 'parquear', 'garaje'])) {
+ respuesta = "¡Sí! Contamos con espacio seguro y muy cómodo dentro del predio para que puedas estacionar tu vehículo con total tranquilidad 🚗💚";
+ } 
+ else if (hasAny(['mascota', 'mascotas', 'perro', 'perros', 'gato', 'gatos', 'animal', 'animales', 'perrito', 'gatito', 'llevar mascotas', 'trasladar mascotas'])) {
+ respuesta = "Para mantener la higiene y tranquilidad general de todos nuestros visitantes, por el momento no se admiten mascotas 🐾. Si tenés un caso especial, escribinos por WhatsApp ANTES de reservar y vemos juntos si hay alguna condición posible. Te pedimos no llevarla sin avisar previamente. 💚";
+ } 
+ else if (hasAny(['asado', 'asados', 'parrilla', 'parrillada', 'quincho', 'asador', 'hacer asado', 'churrasquera'])) {
+ respuesta = "¡Obvio que sí! 🔥 La cabaña tiene su propia parrilla exclusiva al aire libre para que disfrutes de unos ricos asados en familia o con amigos.";
+ } 
+ else if (hasAny(['precio', 'tarifa', 'tarifas', 'costo', 'valor', 'cuesta', 'sale', 'cotizacion', 'presupuesto', 'dinero', 'plata', 'seña', 'descuento', 'promocion', 'transferencia'])) {
+ respuesta = "Los precios dependen de las fechas y la cantidad de días de tu estadía 💰. ¡Además tenemos un 10% de descuento abonando por transferencia bancaria! Podés escribirnos directamente al WhatsApp para pasarte una cotización personalizada al momento. 📲";
+ } 
+ else if (hasAny(['capacidad', 'personas', 'gente', 'espacio', 'entran', 'alojar', 'huespedes', 'cuantos', 'cuantas', 'duermen', 'caben'])) {
+ respuesta = "La cabaña tiene capacidad para alojar cómodamente hasta 8 personas 👨‍👩‍👧‍‍👦. Tiene habitaciones en planta baja y en planta alta.";
+ } 
+ else if (hasAny(['construccion', 'madera', 'pino', 'eucalipto', 'material'])) {
+ respuesta = "Nuestra cabaña tiene un hermoso diseño artesanal construido en un 50% de pino y un 50% de eucalipto, ideal para conectar con la naturaleza 🌲🪵";
+ } 
+ else if (hasAny(['ubicacion', 'donde', 'queda', 'llegar', 'direccion', 'misiones', 'jardin america', 'barrio'])) {
+ respuesta = "Estamos ubicados en Barrio Kolpín, Calle México s/n, en la hermosa ciudad de Jardín América, Misiones 📍🌱";
+ } 
+ else if (hasAny(['horario', 'horarios', 'checkin', 'check-in', 'checkout', 'check-out', 'ingreso', 'salida', 'hora'])) {
+ respuesta = "El horario de Check-in es a partir de las 14:00 hs y el Check-out es hasta las 10:00 hs ⏰.";
+ } 
+ else if (hasAny(['ropa de cama', 'sabanas', 'toallas', 'toalla', 'sabana', 'equipada'])) {
+ respuesta = "¡Sí! Entregamos la cabaña equipada con ropa de cama básica para todos los huéspedes 🛏️.";
+ } 
+ else {
+ respuesta = "Qué buena consulta 😊 Para responderte con exactitud o verificar fechas disponibles, podés consultarnos directo por WhatsApp haciendo clic en el botón verde. ¡Te contestamos al toque! 💚";
+ }
+
+ botMsg.textContent = respuesta;
+ messages.appendChild(botMsg);
+ messages.scrollTop = messages.scrollHeight;
+ }, 600);
+ }
+
+ document.addEventListener("DOMContentLoaded", () => {
+ applyLanguage('es');
+
+ galleryImgs = Array.prototype.slice.call(document.querySelectorAll('.gallery-item img'));
+ galleryImgs.forEach(function(img, i) {
+ watchImg(img);
+ img.closest('.gallery-item').onclick = function() { openLightbox(i); };
+ });
+
+ (function() {
+ const hero = document.querySelector('.hero');
+ const base = 'fotos/portada';
+ (function tryNext(i) {
+ if (i >= EXTS.length) return;
+ const im = new Image();
+ im.onload = function() {
+ hero.style.backgroundImage =
+ "linear-gradient(rgba(30,86,49,.45),rgba(30,86,49,.65)),url('" + base + "." + EXTS[i] + "')";
+ };
+ im.onerror = function() { tryNext(i + 1); };
+ im.src = base + '.' + EXTS[i];
+ })(0);
+ })();
+
+ let touchX = 0;
+ const lbm = document.getElementById('lightboxModal');
+ lbm.addEventListener('touchstart', function(e) { touchX = e.changedTouches[0].clientX; }, { passive: true });
+ lbm.addEventListener('touchend', function(e) {
+ const dx = e.changedTouches[0].clientX - touchX;
+ if (Math.abs(dx) > 50) changeLightboxImage(dx < 0 ? 1 : -1);
+ }, { passive: true });
+
+ const langBtn = document.getElementById('langBtn');
+ const langMenu = document.getElementById('langMenu');
+
+ if (langBtn && langMenu) {
+ langBtn.addEventListener('click', (e) => {
+ e.stopPropagation();
+ langMenu.classList.toggle('show');
+ });
+
+ document.querySelectorAll('.lang-option').forEach(btn => {
+ btn.addEventListener('click', () => {
+ const lang = btn.getAttribute('data-lang');
+ applyLanguage(lang);
+ });
+ });
+
+ document.addEventListener('click', () => {
+ langMenu.classList.remove('show');
+ });
+ }
+ });
+ </script>
+</body>
+</html>
